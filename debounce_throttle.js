@@ -46,7 +46,7 @@ function debounce(fn, wait = 1000, immediate = false){
  * @param immediate 时间段起始执行还是末位执行 bool true 起始 false 末位
  */
 
-function throttle(fn, interval = 1000, immediate = false){
+function throttle(fn, interval = 300, immediate = false){
     let 
         timeout,
         st = 0 
