@@ -20,19 +20,28 @@ function flatten(arr){
         return Number(item)
     })
 }
-
-// 巧妙应用apply
-// Array.prototype.concat每次调用apply，将一维数组当参数执行concat连接
-// 使用some检测存在是否存在嵌套数组（concat每次只能连接一维数组）
-// Array.prototype.concat.apply 奇淫技巧 https://www.cnblogs.com/ziyunfei/archive/2012/09/18/2690412.html
+ 
+/**
+ * 巧妙应用apply
+ * Array.prototype.concat每次调用apply，将一维数组当参数执行concat连接
+ * 使用some检测存在是否存在嵌套数组（concat每次只能连接一维数组）
+ */
 function flatten(arr){ 
     while(arr.some(item => Array.isArray(item))){ 
         arr = Array.prototype.concat.apply([], arr)
     }
     return arr
 }
-
-// 使用Array reduce 方法
+ 
+/**
+ * 使用Array reduce 方法， reduce 传入两个参数
+ * @param1 fn 自定义的函数，函数提供四个参数 
+        accumulator 上次循环返回的值，初始为数组第一项或者reduce 的参数2；
+        currentValue 数组正在处理的元素
+        currentIndex 数组中正在处理的当前元素的索引
+        array 调用reduce()的数组
+ * @param2 initialValue 为第一个函数参数 accumulator的初始值，不提供则以数组第一项为初始值 
+ */
 function flatten(arr){
     return arr.reduce((prev, cur) => prev.concat(Array.isArray(cur) ? flatten(cur) : cur), [])
 } 
