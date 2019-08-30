@@ -39,7 +39,7 @@ class Promise {
     resolve(val){
         let _this = this 
         if(val && (typeof val === 'object' || typeof val === 'function')){ 
-            //返回的是个promise对象
+            //返回的是个promise对象 
             _this.then.call(val, _this.resolve.bind(this), _this.reject.bind(this))
             return
         } 
