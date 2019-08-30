@@ -1,4 +1,4 @@
-### 将一些记录在印象笔记上的零散知识点自我实现下汇总过来
+### 将一些记录在印象笔记上的零散知识点代码自我实现下汇总过来
 
 + [取自淘宝的reset css](https://github.com/lusteng/daily-notes/blob/master/reset.css)
 
