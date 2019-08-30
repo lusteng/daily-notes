@@ -1,6 +1,6 @@
 /**
  * promise 核心处理then 
- * 1.then触发下一步操作
+ * 1.then 触发下一步操作
  * 2.resolve/reject 函数通过setTimeout跳出线程，在then后处理resolve/reject的回调
  */
 
