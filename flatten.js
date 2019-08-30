@@ -32,6 +32,11 @@ function flatten(arr){
     return arr
 }
 
+// 使用Array reduce 方法
+function flatten(arr){
+    return arr.reduce((prev, cur) => prev.concat(Array.isArray(cur) ? flatten(cur) : cur), [])
+} 
+
 let res = flatten(arr)
 
 console.log(res);
