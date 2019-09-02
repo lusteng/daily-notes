@@ -9,3 +9,5 @@
 + [promise简版实现](https://github.com/lusteng/daily-notes/blob/master/promise.js)
 
 + [扁平化数组处理](https://github.com/lusteng/daily-notes/blob/master/flatten.js)
+
++ [vue 生命周期讲解图示](https://github.com/lusteng/daily-notes/blob/master/vue-life-cycle.jpg)
