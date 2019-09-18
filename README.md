@@ -17,3 +17,9 @@
 + [vue 生命周期讲解图示](https://github.com/lusteng/daily-notes/blob/master/src/vue-life-cycle.jpg)
 
 + [vue mixins 提取不同组件的公共处理事务](https://github.com/lusteng/daily-notes/blob/master/src/vue-mixins.md)
+
++ [骨架屏](https://github.com/lusteng/daily-notes/blob/master/src/skeleton.md)
+
++ [多页面打包](https://github.com/lusteng/daily-notes/blob/master/src/multi-page-webpack.md)
+
++ [优化vue打包文件过大](https://github.com/lusteng/daily-notes/blob/master/src/vue-optimize.md)
