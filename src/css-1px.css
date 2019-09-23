@@ -1,0 +1,152 @@
+/**
+ * @Description: css 移动端1px解决方案
+ * 1、缩放方案 伪类 + scale
+ * 2、渐变背景色方案    
+ * 3、阴影方案 (部分设备容易border消失)
+ * 4、背景图片方案（可维护性差）
+ * 5、svg方案（代码复杂度高）
+ * 6、设置viewport的scacle值，dpr2下设置为0.5,dpr2下设置为0.333（侵入性过高，不推荐）
+**/
+
+/* 参考 https://github.com/dengwb1991/owl-ui/blob/master/src/styles/common/border.less */
+/* 线上实例  http://www.liubaitong.com/1px/index.html */
+div {
+    width: 80vw;
+    height: 80px;
+    line-height: 80px;
+    margin: 30px auto;
+    background-color: #f0f0f0; 
+    box-sizing: border-box;
+    text-indent: 2em;
+}
+
+.dpr::after{
+    content: "1"
+}
+
+/*border-top:1px*/ 
+.border_normal,
+/* 缩放方案   */
+.border_scale,
+/* 渐变背景色方案 */
+.border_gradient,
+/* 阴影方案 */
+.border_boxshadow,
+/* 背景图片方案 */
+.border_base64,
+/* svg方案 */
+.border_svg{
+    border-top: 1px solid #999;
+}  
+
+/* dpr2 */
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) {
+    .dpr::after{
+        content: "2"
+    }
+    .border_gradient {
+        background-image: linear-gradient(to top, transparent 50%, #999 50%);
+        background-size: 100% 1px;
+        background-repeat: no-repeat;
+        background-position: top center;
+        border-top: 0 none;
+        padding-top: 1px;
+    }
+    
+    .border_scale {
+        position: relative;
+        padding-top: 1px;
+        border-top: 0 none;
+    }
+    .border_scale::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 200%;
+        height: 200%;
+        border: 1px solid #999;
+        border-radius: 10px;
+        transform: scale(0.5);
+        transform-origin: 0 0;
+        box-sizing: border-box;
+    }
+    .border_boxshadow{
+        border-top: 0 none;
+        box-shadow: 0  -1px 1px -1px red, 
+                    1px  0  1px -1px red,    
+                    0  1px  1px -1px red,    
+                    -1px 0  1px -1px red;    
+    }
+    .border_base64 {
+        padding-top: 1px;
+        border-top: 0 none;
+        background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAQSURBVBhXY5g5c+Z/BhAAABRcAsvqBShzAAAAAElFTkSuQmCC);
+        background-position: 0 0;
+        background-repeat: repeat-x;
+        background-size: 1px 1px;
+    }
+    
+    .border_svg {
+        border-top: 0 none;
+        background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100%' height='1'><rect fill='#999' x='0' y='0.5' width='100%' height='0.5' /></svg>");	
+        background-position:0 0;
+        background-repeat:no-repeat;
+    }
+}
+
+/* dpr3 */
+@media only screen and (-webkit-min-device-pixel-ratio: 3), only screen and (min-device-pixel-ratio: 3) {
+    .dpr::after{
+        content: "3"
+    }
+    .border_gradient {
+        background-image: linear-gradient(to top, transparent 66.66%, #999 66.66%);
+        background-size: 100% 1px;
+        background-repeat: no-repeat;
+        background-position: top center;
+        border-top: 0 none;
+        padding-top: 1px;
+    }
+    
+    .border_scale {
+        position: relative;
+        padding-top: 1px;
+        border-top: 0 none;
+    }
+    .border_scale::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 300%;
+        height: 300%;
+        border: 1px solid #999;
+        border-radius: 15px;
+        transform: scale(0.333);
+        transform-origin: 0 0;
+        box-sizing: border-box;
+    }
+    .border_boxshadow{
+        border-top: 0 none;
+        box-shadow: 0  -1px 1px -1px red, 
+                    1px  0  1px -1px red,    
+                    0  1px  1px -1px red,    
+                    -1px 0  1px -1px red;    
+    }
+    .border_base64 {
+        padding-top: 1px;
+        border-top: 0 none;
+        background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAQSURBVBhXY5g5c+Z/BhAAABRcAsvqBShzAAAAAElFTkSuQmCC);
+        background-position: 0 0;
+        background-repeat: repeat-x;
+        background-size: 1px 1px;
+    }
+    
+    .border_svg {
+        border-top: 0 none;
+        background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100%' height='1'><rect fill='#999' x='0' y='0.333' width='100%' height='0.333' /></svg>");	
+        background-position:0 0;
+        background-repeat:no-repeat;
+    }
+}
