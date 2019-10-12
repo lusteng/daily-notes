@@ -1,7 +1,8 @@
 /**
  * promise 核心处理then 
- * 1.then 触发下一步操作
- * 2.resolve/reject 函数通过setTimeout跳出线程，在then后处理resolve/reject的回调
+ * 1.初始触发resolve或者reject函数，改变state，存储函数传参，调用延时队列
+ * 2.外部调用then方法，存储执行函数队列，返回下一个Promise对象 
+ * 3.异步延时函数调用，处理当前状态下调用的处理函数 触发then的下一步Promise对象的resolve和reject函数调用  
  */
 
 
