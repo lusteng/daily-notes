@@ -13,31 +13,36 @@
  */
 
 function debounce(fn, wait = 1000, immediate = false){
-    let timeout 
-    
+    let timeout   
     return function(){ 
         let _context = this,
             arg = arguments
-
-        timeout && clearTimeout(timeout)  //清楚上次执行
-
-        if(immediate){ //立即执行 
-            let canRun = !timeout
-            //wait时间后timeout为空，fn可再次执行
-            timeout = setTimeout(() => {  
-                timeout = null
-            }, wait)
-
-            canRun && fn.apply(_context, arg)
-        }else{ 
-            timeout = setTimeout(() => {
+ 
+        if(!timeout){
+            if(immediate){ //立即执行 
+                //wait时间后timeout为空，fn可再次执行
+                timeout = setTimeout(() => {  
+                    timeout = null
+                }, wait)
                 fn.apply(_context, arg)
-            }, wait)
+            }else{ 
+                timeout = setTimeout(() => {
+                    fn.apply(_context, arg) 
+                    timeout = null
+                }, wait)
+            } 
         }
     }
 } 
 
-
+// 测试用例
+let fun = function(){
+    console.log(333333333)
+}
+let test = debounce(fun, 2000, true)
+setInterval(() => {
+    test()
+}, 100)
 
 /**
  * @desc 节流
