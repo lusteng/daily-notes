@@ -12,25 +12,38 @@
  * @param immediate 是否立即执行 bool true 是 false 否
  */
 
+/**
+ * @desc 防抖
+ * @param fn 调用函数
+ * @param wait 延迟执行时间  ms
+ * @param immediate 是否立即执行 bool true 是 false 否
+ */
+
 function debounce(fn, wait = 1000, immediate = false){
-    let timeout   
+    let timeout 
+    
     return function(){ 
         let _context = this,
             arg = arguments
- 
-        if(!timeout){
-            if(immediate){ //立即执行 
-                //wait时间后timeout为空，fn可再次执行
-                timeout = setTimeout(() => {  
-                    timeout = null
-                }, wait)
+        /**********
+        * ！！！防抖和节流最大区别 ！！！ 
+        * 防抖只允许连续动作内执行一次，若动作一直触发则该次后续触发的函数不执行，故此处清除timeout
+        * 节流在连续动作内降低执行频率，一直触发则按wait参数频率触发setTimeout执行，此处节流和防抖最大区别处也是执行代码最大区别处
+        ************/
+        timeout && clearTimeout(timeout)  
+
+        if(immediate){ //立即执行 
+            let canRun = !timeout
+            //wait时间后timeout为空，fn可再次执行
+            timeout = setTimeout(() => {  
+                timeout = null
+            }, wait)
+
+            canRun && fn.apply(_context, arg)
+        }else{ 
+            timeout = setTimeout(() => {
                 fn.apply(_context, arg)
-            }else{ 
-                timeout = setTimeout(() => {
-                    fn.apply(_context, arg) 
-                    timeout = null
-                }, wait)
-            } 
+            }, wait)
         }
     }
 } 
