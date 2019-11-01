@@ -16,6 +16,8 @@
 
 + [扁平化数组处理](https://github.com/lusteng/daily-notes/blob/master/src/flatten.js)
 
++ [分析Chrome调试面板timing来优化用页面性能](https://github.com/lusteng/daily-notes/blob/master/src/net-optimize.md)
+
 + [vue 生命周期讲解图示](https://github.com/lusteng/daily-notes/blob/master/src/vue-life-cycle.jpg)
 
 + [vue mixins 提取不同组件的公共处理事务](https://github.com/lusteng/daily-notes/blob/master/src/vue-mixins.md)
