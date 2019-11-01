@@ -1,14 +1,9 @@
 ### 为什么要升级？
-16版React不仅体积缩小了30%，还新增了碎片（fragments）、错误边界、portals、支持自定义 DOM 属性、Hooks、新的生命周期。。。
-公司主业务线由于开展比较早，每次迭代新功能却只能用用15版本那些陈旧的功能，为了开上新的React，组内讨论，决定利用一段时间把主业务线React和架构同时做次升级
-
-
-### --save 与 --save-dev 区别
-踩完坑对这俩有了更准确的理解， dev只安装develop环境需要的插件，一般是打包工具，换言之，该部分插件不会出现在生产环境上，而--save则是生产和开发环境都会用到，通常是react这类的功能代码库
+16版React不仅体积缩小了30%，还新增了碎片（fragments）、错误边界、portals、支持自定义 DOM 属性、Hooks等一些功能强大的新特性啦啦啦
+然鹅公司主业务线由于开展比较早，每当开发新功能却用不上新的强大特性，让人很不服气，这不为了开上新的React的车，组内讨论，决定利用一段时间把主业务线React和架构同时来次大的升级调整
  
-### 踩坑之路
-升级react、react-dom版本连带产生的问题，落后版本库升级，打包工具升级，解决升级后的打包错误
-
+### 想法是好的，路是坎坷的，踩坑之路不断~~~
+升级react、react-dom版本连带产生的问题，落后版本库升级，打包工具升级，解决升级后的打包错误 
 
 + #### webpack2 升级到 webpack4
 1. 增加webpack4 mode development/production 配置项
@@ -376,7 +371,7 @@ class ErrorBoundary extends React.Component {
   render() {
     if (this.state.hasError) {
       // 你可以自定义降级后的 UI 并渲染
-      return <h1>Something went wrong.</h1>;
+      return "Something went wrong.";
     }
 
     return this.props.children; 
@@ -575,7 +570,10 @@ const HomePage =(props) => {
 ```
 
 + 自定义Hook
-一种官方约定： 函数名以use 开头，并调用其他hook，则认为是一种自定义hook
+一种官方约定： 函数名以use 开头，并调用其他hook，则认为是一种自定义hook 
+
+### --save 与 --save-dev 区别
+踩完坑对这俩有了更准确的理解， dev只安装develop环境需要的插件，一般是打包工具，换言之，该部分插件不会出现在生产环境上，而--save则是生产和开发环境都会用到，通常是react这类的功能代码库
 
 更多其他hook，参见官方文档
 [hook文档](https://zh-hans.reactjs.org/docs/hooks-overview.html)
