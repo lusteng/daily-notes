@@ -9,7 +9,7 @@ function flatten(arr){
             res = res.concat(flatten(item)) 
         }else{
             res.push(item)
-        } 
+        }
     })
     return res
 } 
@@ -46,4 +46,6 @@ function flatten(arr){
     return arr.reduce((prev, cur) => prev.concat(Array.isArray(cur) ? flatten(cur) : cur), [])
 } 
 
-let res = flatten(arr) 
+let res = flatten(arr)
+
+console.log(res);
