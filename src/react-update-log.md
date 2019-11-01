@@ -11,7 +11,7 @@
 2. loaders 改 rules 
 
 3. webpack.dll.js 
- ```
+ ```js
  - new webpack.optimize.OccurenceOrderPlugin()
  + new webpack.optimize.OccurrenceOrderPlugin()
 
@@ -33,7 +33,7 @@
 
  5. autoprefixer-loader废弃
 改为 postcss-loader + autoprefxer
-```
+```js
 // 根目录新增 postcss.config.js
 module.exports= {
     plugins: [
@@ -54,7 +54,7 @@ module.exports= {
 ``` 
 
 6. 配置更新
-```
+```js
 - resolve: {
     root: [
         path.resolve('node_modules')
@@ -85,7 +85,7 @@ babel-loader@^7及以下 搭配 babel-x babel7版本之前工具库
 > 解决 {...this.props} es6解构赋值语法转换
 
 最后改后的.babelrc 配置文件
-```
+```js
 {
     "presets": [
         "@babel/preset-env",
@@ -102,20 +102,20 @@ babel-loader@^7及以下 搭配 babel-x babel7版本之前工具库
 ```
 
 4. babel打包插件报错
-```
+```js
 Uncaught TypeError: Cannot assign to read only property 'exports' of object '#<Object>'  报错
 import 和 module.export不能混用， 安装@babel/plugin-transform-modules-commonjs 插件解决
 ```
 
 ### react-hot-loader 升级
 1. 打包报错，原因 react-hot-loader 版本过低
-```
+```js
 Module not found: Error: Cannot resolve module 'react/lib/ReactMount'  
 ```
 
 ### React 关联包升级
 1. react 与 react-dom对应版本不一致导致报错
-```
+```js
 lib.js:formatted:52200 Uncaught TypeError: Cannot read property 'hasOwnProperty' of undefined
     at Object.<anonymous> (lib.js:formatted:52200)
 ```
@@ -123,10 +123,10 @@ lib.js:formatted:52200 Uncaught TypeError: Cannot read property 'hasOwnProperty'
 [stackoverflow解答](https://stackoverflow.com/questions/56003446/uncaught-typeerror-cannot-read-property-hasownproperty-of-undefined-react-dom)
 
 2. react-router 与 react对应不一致 导致报错
-```
+```js
 "export 'hashHistory' was not found in 'react-router'
 ```
-```
+```js
 "export 'Link' was not found in 'react-router'
 ```
 
@@ -142,7 +142,7 @@ lib.js:formatted:52200 Uncaught TypeError: Cannot read property 'hasOwnProperty'
     引入 create-react-class
 
 3. 消除不安全生命周期在开发环境的warning
-```
+```js
 componentWillMount
 componentWillReceiveProps
 componentWillUpdate
@@ -163,7 +163,7 @@ componentWillUpdate
 + ## react-router v4的变迁
 react-router v3与v2本质上区别不大，v4版本开始有了本质的变化 
 最直观的体现，v4版本的路由使用更加灵活，不再是v3及之前那种僵硬的用法，可以与其他组件和睦相处，不再排它性
-```
+```jsx
 import { BrowserRouter, Route } from 'react-router-dom'
 
 const PrimaryLayout = () => (
@@ -195,7 +195,7 @@ render(<App />, document.getElementById('root'))
 不设置exact： 访问/users 只同时匹配/users和/
 
 2. Switch 只能匹配包裹的一条路由
-```
+```jsx
 // 增加Switch， 访问/users 只渲染第一个UsersPage组件
 // 不增加Switch， 访问/users 同时渲染UsersPage, myPage组件
 
@@ -232,7 +232,7 @@ ReactDom.render(<App />, document.getElementById('app'))
 ```
  
 3. 新增props.match，可以轻松获取路由进入匹配路上后传入的参数
-```
+```jsx
 <Route path="/users/:userId" component={UserProfilePage} />
 
 //UserProfilePage 组件可以通过 this.props.match.params.userId 获取到进入路由的userId
@@ -242,7 +242,7 @@ ReactDom.render(<App />, document.getElementById('app'))
 4. [借助v4 api 构建具有鉴权的路由](https://css-tricks.com/react-router-4/#article-header-id-8)
 
 5. 新增NavLink，可以增加active选中状态
-```
+```jsx
 //匹配到/app时增加active class
 <NavLink to="/app" exact activeClassName="active">Home</NavLink>
 ``` 
@@ -271,7 +271,7 @@ Reducer 根据Action描述的type来改变的数据state，reducer是定义一�
 + react 连接 reduce (react-redux) 通过容器组件将store传入到react的展示型组件
 + 根组件处 通过的react-redux提供的Provider 高阶组件，将Redux和React绑定在一起
 + 通过mapStateToProps 将redux数据中心store state映射到展示组件的props中
-```
+```jsx
 const mapStateToProps = state => {
     return {
         todos: state.todos
@@ -289,7 +289,7 @@ const mapDispatchToProps = dispatch => {
 }
 ```
 + 使用connect 连接容器组件和展示组件
-```
+```jsx
 
 import { connect } from 'react-redux'
 
@@ -303,7 +303,7 @@ export default connect(
 定义action 处理函数不单要定义action，还要有个专门的字典对应不同action的type
 
 + 使用createStore让所有容器组件可以访问的store，在根组件操作
-```
+```jsx
 import React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
@@ -341,7 +341,7 @@ render() {
     <li/>2</li>,
     <li/>3</li>,
   ];
-  // or
+  //or
   return "render string" 
 }
 
@@ -351,7 +351,8 @@ render() {
 捕获到子组件错误后使用  static getDerivedStateFromError() 渲染备用UI
  componentDidCatch() 打印错误信息
 
-```
+```js
+
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
@@ -390,7 +391,7 @@ class ErrorBoundary extends React.Component {
 
 [代码解析](https://zh-hans.reactjs.org/docs/portals.html)
 
-```
+```js
 render() {
   // React 并*没有*创建一个新的 div。它只是把子元素渲染到 `domNode` 中。
   // `domNode` 是一个可以在任何位置的有效 DOM 节点。
@@ -406,7 +407,9 @@ Fiber 是对 React 核心算法的一次重新实现，将原本的同步更新�
 
 5. Fragment(空标签)
 改变15版本的，数组子元素需要用个额外标签包裹
-```
+
+```html
+
   <table>
       <tbody>
           <tr>
@@ -420,8 +423,8 @@ Fiber 是对 React 核心算法的一次重新实现，将原本的同步更新�
       </tbody>
   </table>
 
-  <!-- 实际渲染dom：
-  <table>
+  实际渲染dom：
+   <table>
       <tbody>
           <tr> 
               <td>aaa</td>
@@ -430,11 +433,13 @@ Fiber 是对 React 核心算法的一次重新实现，将原本的同步更新�
               <td>ddd</td> 
           </tr>
       </tbody>
-  </table> -->
+   </table> 
+
 ```
 
 6. createRef / forwardRef (新的定义ref的方式)
-```
+```js
+
 // before React 16
   componentDidMount() {
     const el = this.refs.myRef
@@ -444,7 +449,7 @@ Fiber 是对 React 核心算法的一次重新实现，将原本的同步更新�
     return <div ref="myRef" />
   }
 
-// React 16+
+  // React 16+
   constructor(props) {
     super(props)
 
@@ -459,7 +464,8 @@ Fiber 是对 React 核心算法的一次重新实现，将原本的同步更新�
 ```
 
 forwardRef 多使用在高阶组件或者父组件获取子组件dom元素
-```
+
+```js
 const FancyButton = React.forwardRef((props, ref) => (
     <button ref={ref} className="FancyButton">
       {props.children}
@@ -489,7 +495,7 @@ class Parent extends React.Component{
 [参考文档](https://zh-hans.reactjs.org/docs/react-api.html#reactcreateref)
 
 7. React.lazy(异步加载组件)
-```
+```js
 const OtherComponent = React.lazy(() => import('./OtherComponent'));
 ```
 [参考文档](https://zh-hans.reactjs.org/docs/code-splitting.html#reactlazy)
@@ -499,7 +505,8 @@ const OtherComponent = React.lazy(() => import('./OtherComponent'));
 + getDerivedStateFromProps (从props的值映射state) 
 取代 componentWillMount componentWillReceiveProps
 一个静态的纯函数生命周期，根据props返回state的映射
-```
+
+```js
   //纯函数，不要做什么额外的副作用改变
   static getDerivedStateFromProps(props, state){ 
       if(props.test !== state.testState){
@@ -518,7 +525,7 @@ const OtherComponent = React.lazy(() => import('./OtherComponent'));
 取代 componentWillUpdate 
 配合componentDidUpdate使用
 
-```
+```js
 getSnapshotBeforeUpdate(prevProps, prevState) {
     if (prevProps.test < this.props.test) {
       return prevProps.test + 10;
@@ -538,7 +545,7 @@ componentDidUpdate(prevProps, prevState, snapshot) {
 
 + useState  为组件添加state值， 第一个参数为state值，第二个参数为设置state值的函数，相当于setState
 
-```
+```js
 import React, { useState } from 'react'
 const HomePage =(props) => {
     const [count, setCount] = useState(11)
@@ -553,7 +560,7 @@ const HomePage =(props) => {
 + useEffect 集合了react 生命周期的作用, 每次组件更新会调用useEffect   
 class 组件中的 componentDidMount、componentDidUpdate 和 componentWillUnmount 具有相同的用途
 
-```
+```js
 const HomePage =(props) => {
     const [count, setCount] = useState(11)
     const [val, setVal] = useState('my val')
