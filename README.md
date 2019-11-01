@@ -32,3 +32,5 @@
 + [多页面打包](https://github.com/lusteng/daily-notes/blob/master/src/multi-page-webpack.md)
 
 + [优化vue打包文件过大](https://github.com/lusteng/daily-notes/blob/master/src/vue-optimize.md)
+
++ [react项目版本升级踩坑日志](https://github.com/lusteng/daily-notes/blob/master/src/react-update-log.md)
