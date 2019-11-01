@@ -9,7 +9,7 @@ PS：当然还有那些css，js文件的拆分输入
 > 本例中分为front和backend前后两个界面
 
 1. 配置入口
-```
+```js
     // 改为多入口
     entry: {
         front: './src/project/front/main.js',

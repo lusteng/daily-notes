@@ -1,10 +1,3 @@
-<!--
- * @Description: In User Settings Edit
- * @Author: your name
- * @Date: 2019-08-30 11:41:59
- * @LastEditTime: 2019-08-30 11:41:59
- * @LastEditors: your name
- -->
 ### 将一些记录在印象笔记上的零散知识点代码自我实现下汇总过来
 
 + [移动端真机调试之spy-debugger](https://github.com/lusteng/daily-notes/issues/1)

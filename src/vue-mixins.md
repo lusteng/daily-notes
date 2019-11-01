@@ -7,7 +7,7 @@
 > 需要抽象出多个组件的公共功能然后进行封装，很好的避免公共需求改变时，每个组件都要改一遍的尴尬局面
 
 公共文件定义mixins
-```
+```js
 // mixins/common.js
 const common = {
     data(){
@@ -31,7 +31,7 @@ export default common
 ```
 
 组件A 引入 
-```
+```js
   import common from 'yourPath/mixins/common' 
   export default {  
     name: "a",
@@ -55,7 +55,7 @@ export default common
 
 
 组件B 引入 
-```
+```js
   import common from 'yourPath/mixins/common' 
   export default {  
     name: "b",
@@ -81,7 +81,7 @@ export default common
 > 针对不同的路由级组件做不同的事物，不必通过路由钩子来实现
 
 // mixins/globalMixins.js
-``` 
+```js 
 const GlobalMixins = {
     created() { 
         const componentName = this.$options.name
@@ -97,7 +97,7 @@ const GlobalMixins = {
 export default GlobalMixins
 ```  
 // mian.js
-```
+```js
 import GlobalMixins from 'yourPath/mixins/globalMixins'
 Vue.mixin(GlobalMixins)
 ```

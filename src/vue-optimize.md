@@ -6,20 +6,20 @@ PS: 摘自早期项目优化记录，由于技术更新，有些不太适用了�
 > 针对路由组件级组件分片打包,分隔文件大小
 
 优化前
-``` 
+```js 
 //路由配置引入组件
 import BusinessManage from '@PAGE/Business/BusinessManage'
 
 ```
 优化后
-``` 
+```js
 // 此处针对() => import封装一层
 const BusinessManage = () => import('@PAGE/Business/BusinessManage')
 ```
 
 输出分块js文件按文件名输出, 需要webpack 2.6.0以上版本
 
-```
+```js
 const BusinessManage = () => import(/* webpackChunkName: "BusinessManage" */'@PAGE/Business/BusinessManage')
 ```
 
@@ -29,7 +29,7 @@ const BusinessManage = () => import(/* webpackChunkName: "BusinessManage" */'@PA
 #### 2. 引入第三方cdn打包
 > 项目中存在较大的第三方库，通过webpack配置将第三方库隔离出打包文件，减少首屏白屏时间
 
-```
+```js
 // webpack.base.config.js 此处以项目vue-cli2.0为例
 module.exports = {
     ... 
@@ -51,7 +51,7 @@ module.exports = {
 #### 3.开启文件gzip(后端同学开启下)
 
 #### 4.取消map文件生成(线上map文件用于定位报错文件位置，意义不大，可以采用埋点监控)
-```
+```js
 // config/index.js
 productionSourceMap: false
 ```

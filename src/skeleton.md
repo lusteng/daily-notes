@@ -10,7 +10,7 @@
 *****
 + ### 侵入式
 > 提前感知要植入骨架的页面，将提前针对性写好的骨架屏代码植入
-```
+```js
 // html 针对已知的页面写好骨架植入
 <div class="skeleton">
     <div class="skeleton-head"></div>
@@ -58,7 +58,7 @@
 
 编写webpack插件
 // MyPlugin.js
-``` 
+```js 
 function MyPlugin(options) {  
     // 个性化定制
     this.options = options; 
@@ -98,7 +98,8 @@ MyPlugin.prototype.apply = function(compiler) {
 module.exports = MyPlugin; 
 ```
 webpack配置文件调用
-```
+
+```js
 
 //省略n行代码 ...
 
