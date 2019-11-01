@@ -10,7 +10,7 @@
 *****
 + ### 侵入式
 > 提前感知要植入骨架的页面，将提前针对性写好的骨架屏代码植入
-```js
+```html
 // html 针对已知的页面写好骨架植入
 <div class="skeleton">
     <div class="skeleton-head"></div>
