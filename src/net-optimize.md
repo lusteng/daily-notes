@@ -5,7 +5,7 @@
 
 如下图列出一个资源加载的时间线
 
-![avatar](https://github.com/lusteng/daily-notes/blob/master/images/chrome-timing.png)
+<img src="https://github.com/lusteng/daily-notes/blob/master/images/chrome-timing.png" width="486" height="407"/>
 
 ### timing 解析
 + Queuing(排队)
