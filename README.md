@@ -2,6 +2,8 @@
 
 + [移动端真机调试之spy-debugger](https://github.com/lusteng/daily-notes/issues/1)
 
++ [jsonp 封装](https://github.com/lusteng/daily-notes/blob/master/src/jsonp.md)
+
 + [取自淘宝的reset css](https://github.com/lusteng/daily-notes/blob/master/src/reset.css)
 
 + [1px解决方案](https://github.com/lusteng/daily-notes/blob/master/src/css-1px.css)
