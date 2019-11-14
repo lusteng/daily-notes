@@ -31,3 +31,5 @@
 + [优化vue打包文件过大](https://github.com/lusteng/daily-notes/blob/master/src/vue-optimize.md)
 
 + [react项目版本升级踩坑日志](https://github.com/lusteng/daily-notes/blob/master/src/react-update-log.md)
+
++ [跨域方式实现总结](https://github.com/lusteng/daily-notes/blob/master/src/cross-domain.md)
