@@ -58,7 +58,7 @@ server {
       }
     </script>
     
-    // b 页面 
+    // b 页面 4000
     // 监听message
     window.onmessage = function(e) {
         console.log(e.data) // are you ok?
@@ -72,7 +72,7 @@ server {
 ```html
 // socket.html
 <script>
-    let socket = new WebSocket('ws://localhost:3000');
+    let socket = new WebSocket('ws://localhost:3000/test');
     socket.onopen = function () {
       socket.send('are you ok? ');//向服务器发送数据
     }
@@ -85,18 +85,27 @@ server {
 //todo 完成这个node 实例
 ```js
 // node server.js
-let koa = require('koa');
-let app = express();
-let WebSocket = require('ws');//记得安装ws
-let wss = new WebSocket.Server({port:3000});
-wss.on('connection',function(ws) {
-  ws.on('message', function (data) {
-    console.log(data);
-    ws.send('ok')
-  });
-})
+const Koa = require('koa'),
+    route = require('koa-route'),
+    websockify = require('koa-websocket');
+
+const app = websockify(new Koa()); 
+app.ws.use(function (ctx, next) {
+    return next(ctx);
+});
+
+// Using routes
+app.ws.use(route.all('/test', function (ctx) {
+    ctx.websocket.on('message', function (message) {
+        console.log(message);
+        ctx.websocket.send('yes');
+    });
+}));
+
+app.listen(3000);
 
 ```
+
 
 
 
