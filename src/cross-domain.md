@@ -81,8 +81,7 @@ server {
     }
 </script>
 ```
-
-//todo 完成这个node 实例
+ 
 ```js
 // node server.js
 const Koa = require('koa'),
@@ -105,7 +104,69 @@ app.ws.use(route.all('/test', function (ctx) {
 app.listen(3000);
 
 ```
+6. window.name + iframe
+> 巧妙利用window.name(只能window.name属性)这个属性可以通过iframe切换时保留下来，然后可以通过本域页面访问到window.name 这个变量来绕过跨域机制
 
+```html
+<!-- 3000端口下 -->
+<!-- a页面 -->
+<!-- iframe加载c页面 -->
+<iframe src="http://localhost:4000/c.html" onload="load()" frameborder="0" id="iframe"></iframe>
 
+<script>
+  let firstLoad = true
+  let load = () => {
+    if(firstLoad){
+      // 初次加载c页面，更换加载b页面
+      let iframe = document.getElementById('iframe')
+      iframe.src = 'http://localhost:3000/b.html'
+      firstLoad = false
+    }else{
+      // 第二次加载b页面，绕过跨域限制取window.name 值
+      console.log(JSON.parse(iframe.contentWindow.name).refer) //c domain
+    }
+  }
+</script>
 
+<!-- b页面 -->
+<!-- 空页面，为了获取c页面的window.name -->
+```
+
+```html
+<!-- 4000 端口下 -->
+<!-- c页面 -->
+<script>
+  //传递信息
+  window.name = JSON.stringify({
+      "refer":"c domain"
+  })
+</script> 
+```
+
+7. document.domain + iframe
+> 通过js将两个子域设置相同的主域，可以访问其他二级域名的变量，适合同一主域下的二级域名的情况，比如a.test.com 和 b.test.com 
+
+```html
+<!-- a.html -->
+<!-- a.test.com -->
+  <!-- 访问b.test.com  -->
+  <iframe src="http://b.test.com/b.html" frameborder="0" onload="load()" id="frame"></iframe>
+  <script>
+    // 设置主域
+    document.domain = 'test.com'
+    function load() {
+      // 访问b.test.com 中的变量
+      console.log(frame.contentWindow.bDomain);
+    }
+  </script>
+```
+```html
+<!-- b.html -->
+<!-- b.test.com -->
+   <script>
+    // 设置主域
+    document.domain = 'test.com' 
+    let bDomain = 'b.test'
+   </script>
+```
 
