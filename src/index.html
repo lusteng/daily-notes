@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试</title>
+</head>
+<body>
+    
+    <div>fsdfkdsjlfjdsfklj</div>
+    <script>
+        console.log("websockets")
+    let socket = new WebSocket('ws://localhost:3000/test');
+    socket.onopen = function () {
+        socket.send('are you ok? ');//向服务器发送数据
+    }
+    setInterval(() => {
+        socket.send('i coming')
+    }, 1000)
+    socket.onmessage = function (e) {
+        console.log(e.data);//接收服务器返回的数据
+    }
+</script>
+    <div>
+    </div>
+</body>
+</html>
