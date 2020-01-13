@@ -1,0 +1,51 @@
+<!--
+ * @Editors: Liu baitong
+ * @Date: 2020-01-09 10:52:22
+ * @LastEditTime : 2020-01-13 17:53:29
+ -->
+<!--
+ * @Editors: Liu baitong
+ * @Date: 2020-01-09 10:52:22
+ * @LastEditTime : 2020-01-09 18:07:14
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"> 
+        <button id="update">更新txt</button>
+        <button id="update1">更新name</button>
+    </div>
+    <script src="./observe.js"></script>
+    <script>
+        let vm = new Vue({
+            el: "#app",
+            data(){
+                return {
+                    txt: "dfffff",
+                    name:"name",
+                    name1 : "name1"
+                }
+            }
+        })
+
+        vm.mounted()
+
+        vm._data.txt = 'ffkkfkkfkffk'  
+        vm._data.name = 'ffkkfkkfkffk'   
+
+        document.getElementById('update').onclick = () => {
+            vm._data.txt = Math.random(+ new Date())
+        }
+        document.getElementById('update1').onclick = () => {
+            vm._data.name1 = Math.random(+ new Date())
+        }
+    </script>
+</body>
+</html>

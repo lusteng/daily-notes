@@ -1,3 +1,9 @@
+<!--
+ * @Editors: Liu baitong
+ * @Date: 2019-11-15 15:08:12
+ * @LastEditTime : 2020-01-13 18:39:32
+ * @Description: 
+ -->
 ### 将一些记录在印象笔记上的零散知识点代码自我实现下汇总过来
 
 + [移动端真机调试之spy-debugger](https://github.com/lusteng/daily-notes/issues/1)
@@ -33,3 +39,5 @@
 + [react项目版本升级踩坑日志](https://github.com/lusteng/daily-notes/blob/master/src/react-update-log.md)
 
 + [跨域方式实现总结](https://github.com/lusteng/daily-notes/blob/master/src/cross-domain.md)
+
++ [模拟实现Vue数据双向绑定响应](./mvvm/observer.js)
